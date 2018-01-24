@@ -81,7 +81,12 @@ async function createBlocks() {
                 block.style.height = blockSideLength + "px";
 
                 //set background image of block to be the coin icon
-                block.style.backgroundImage = "url('https://files.coinmarketcap.com/static/img/coins/128x128/" + coin.id + ".png')"
+                //we use hd custom images for large coins
+                if (['bitcoin', 'ethereum', 'bitcoin-cash', 'ripple'].includes(coin.id)) {
+                    block.style.backgroundImage = "url('./img/" + coin.id + ".png')"
+                } else {
+                    block.style.backgroundImage = "url('https://files.coinmarketcap.com/static/img/coins/128x128/" + coin.id + ".png')"
+                }
 
                 //add hover over information
                 block.title = `${coin.symbol}: $${parseFloat(coin.market_cap_usd).toLocaleString()} [$${parseFloat(coin.price_usd).toLocaleString()}] (${(coin.percent_change_24h > 0 ? '+' + coin.percent_change_24h : coin.percent_change_24h)}%)`;
