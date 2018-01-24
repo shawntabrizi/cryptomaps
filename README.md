@@ -1,4 +1,4 @@
-# cryptomaps
+# Cryptomaps
 
 Get a view of cryptocurrencies where their relative size compared to the total market cap is visually displayed.
 
