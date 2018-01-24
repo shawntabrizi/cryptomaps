@@ -16,6 +16,11 @@ async function getPrice() {
 //main function
 async function createBlocks() {
     try {
+        //make sure page is empty
+        var output = document.getElementById("output")
+        output.innerHTML = ""
+
+        //default slider value is 500
         var slider = document.getElementById("slider")
 
         //if tokens aren't loaded yet...
@@ -50,10 +55,6 @@ async function createBlocks() {
             //disable resize because we handle it ourselves
             resize: false
         });
-
-        //make sure page is empty
-        var output = document.getElementById("output")
-        output.innerHTML = ""
 
         //calculate viewport area, minus the header and footer
         var viewportwidth = window.innerWidth;
