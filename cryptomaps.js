@@ -13,6 +13,18 @@ async function getPrice() {
     }
 }
 
+//Get coin id from coinmarketcap
+async function getId() {
+    try {
+        let response = await fetch("https://s2.coinmarketcap.com/generated/search/quick_search.json");
+        let data = await response.json();
+
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 //main function
 async function createBlocks() {
     try {
@@ -26,6 +38,7 @@ async function createBlocks() {
         //if tokens aren't loaded yet...
         if (!globalCoins) {
             globalCoins = await getPrice();
+            coinIds = await getId();
             //set the slider max to the max number of tokens
             slider.max = globalCoins.length
         }
@@ -64,6 +77,7 @@ async function createBlocks() {
         //for each coin
         for (c in coins) {
             var coin = coins[c];
+            var id = coinIds[c];
             //if it has market cap data
             if (coin.market_cap_usd) {
 
@@ -85,7 +99,7 @@ async function createBlocks() {
                 if (['bitcoin', 'ethereum', 'bitcoin-cash', 'ripple'].includes(coin.id)) {
                     block.style.backgroundImage = "url('./img/" + coin.id + ".png')"
                 } else {
-                    block.style.backgroundImage = "url('https://files.coinmarketcap.com/static/img/coins/128x128/" + coin.id + ".png')"
+                    block.style.backgroundImage = "url('https://files.coinmarketcap.com/static/img/coins/128x128/" + id.id + ".png')"
                 }
 
                 //add hover over information
