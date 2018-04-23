@@ -99,7 +99,7 @@ async function createBlocks() {
                 if (['bitcoin', 'ethereum', 'bitcoin-cash', 'ripple'].includes(coin.id)) {
                     block.style.backgroundImage = "url('./img/" + coin.id + ".png')"
                 } else {
-                    block.style.backgroundImage = "url('https://files.coinmarketcap.com/static/img/coins/128x128/" + id.id + ".png')"
+                    block.style.backgroundImage = "url('https://s2.coinmarketcap.com/static/img/coins/128x128/" + id.id + ".png')"
                 }
 
                 //add hover over information
